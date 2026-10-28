@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>बायोडाटा खोजें | मिथिला विवाह मंच</title>
+<style>
+:root{--bg:#f6efe9;--paper:#fff;--ink:#231942;--muted:#5d536d;--rose:#d4537e;--rose-soft:rgba(212,83,126,.12);--violet:#5541a8;--line:rgba(35,25,66,.1);--shadow:0 18px 44px rgba(35,25,66,.1)}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;font-family:"Nirmala UI","Segoe UI",sans-serif;color:var(--ink);background:radial-gradient(circle at top left,rgba(212,83,126,.14),transparent 28%),radial-gradient(circle at bottom right,rgba(85,65,168,.13),transparent 30%),linear-gradient(180deg,#fbf6f1,var(--bg))}a{color:inherit;text-decoration:none}.shell{max-width:1120px;margin:auto;padding:20px 16px 50px}.topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:20px}.brand{display:flex;align-items:center;gap:10px;font-weight:900;font-size:18px}.brand img{width:48px;height:48px;object-fit:contain;background:white;border-radius:14px;padding:4px;box-shadow:0 8px 24px #23194218}.pill{padding:11px 17px;border:1px solid var(--line);border-radius:999px;background:#ffffffc9;font-weight:800}.hero{border-radius:28px;padding:clamp(25px,5vw,48px);color:#fff;background:linear-gradient(120deg,rgba(35,25,66,.96),rgba(85,65,168,.86)),url('images/cover_foto.png') center/cover;box-shadow:var(--shadow)}.eyebrow{display:inline-block;border:1px solid #ffffff55;border-radius:99px;padding:6px 12px;font-size:13px;font-weight:800}.hero h1{font-size:clamp(30px,5vw,48px);line-height:1.15;margin:16px 0 10px}.hero p{line-height:1.8;margin:0;max-width:700px;color:#fff0f6}.panel{margin-top:22px;padding:clamp(18px,3vw,28px);background:#ffffffdf;border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow)}.panel h2{margin:0 0 7px;font-size:24px}.sub{margin:0 0 20px;color:var(--muted);line-height:1.7}.formgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.type-toggle{display:flex;gap:10px}.type-option{flex:1;position:relative}.type-option input{position:absolute;opacity:0;pointer-events:none}.type-option span{display:flex;align-items:center;justify-content:center;min-height:48px;border:1px solid #d9d0e2;border-radius:12px;background:#fff;color:var(--ink);font-weight:900;cursor:pointer;transition:.2s}.type-option input:checked+span{background:linear-gradient(135deg,var(--ink),var(--violet));color:#fff;border-color:transparent;box-shadow:0 8px 20px #5541a833}.type-option input:focus-visible+span{outline:3px solid #d4537e;outline-offset:2px}.field label{display:block;font-weight:800;margin:0 0 7px;font-size:14px}.field input,.field select{width:100%;height:48px;padding:0 12px;border:1px solid #d9d0e2;border-radius:12px;background:white;color:var(--ink);font:inherit;outline-color:var(--violet)}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.btn{border:0;border-radius:12px;min-height:48px;padding:0 22px;background:linear-gradient(135deg,var(--ink),var(--violet));color:#fff;font:inherit;font-weight:900;cursor:pointer}.btn.secondary{background:white;color:var(--ink);border:1px solid var(--line)}.status{margin:18px 0 0;color:var(--muted);line-height:1.7}.results-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.results-head h2{margin:0}.count{color:var(--violet);font-weight:900}.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:18px}.card{background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:0 10px 26px #2319420c;display:flex;flex-direction:column}.photo{height:245px;background:linear-gradient(135deg,#eee5f3,#f9e8ee);display:grid;place-items:center;color:#6b5a7b;font-weight:800;overflow:hidden}.photo img{width:100%;height:100%;object-fit:cover}.cardbody{padding:17px;display:flex;flex-direction:column;flex:1}.card h3{margin:0 0 12px;font-size:20px;overflow-wrap:anywhere}.meta{display:grid;gap:8px;margin-bottom:16px;color:var(--muted);font-size:14px;line-height:1.5}.meta b{color:var(--ink)}.wa{margin-top:auto;display:flex;justify-content:center;align-items:center;min-height:46px;border-radius:12px;background:#25d366;color:#06260f;font-weight:900}.empty{grid-column:1/-1;text-align:center;padding:30px 18px;background:#fff;border:1px dashed #cfc2dc;border-radius:18px;color:var(--muted);line-height:1.8}.foot{text-align:center;color:var(--muted);font-size:13px;margin-top:25px;line-height:1.7}
+@media(max-width:800px){.formgrid{grid-template-columns:repeat(2,minmax(0,1fr))}.cards{grid-template-columns:repeat(2,minmax(0,1fr))}.photo{height:220px}}
+@media(max-width:520px){.shell{padding:14px 12px 36px}.topbar{align-items:flex-start}.brand{font-size:16px}.brand img{width:42px;height:42px}.topbar .pill{font-size:13px;padding:10px 12px}.hero{border-radius:20px}.formgrid,.cards{grid-template-columns:1fr}.photo{height:270px}.actions .btn{width:100%}}
+</style>
+</head>
+<body><main class="shell">
+<header class="topbar"><a class="brand" href="./"><img src="images/mithila1.png" alt="मिथिला विवाह मंच लोगो" onerror="this.style.display='none'"><span>मिथिला विवाह मंच</span></a><a class="pill" href="./about.html">हमारे बारे में</a></header>
+<section class="panel" aria-live="polite"><div class="results-head"><h2>उपलब्ध प्रोफाइल</h2><span class="count" id="count"></span></div><div class="cards" id="cards"><div class="empty">आपकी खोज के परिणाम यहाँ दिखाई देंगे।</div></div><div class="actions" id="moreWrap" style="display:none"><button class="btn secondary" id="moreBtn" type="button">और प्रोफाइल देखें</button></div></section>
+<footer class="foot">मिथिला विवाह मंच · परिवार आपस में सीधे संपर्क कर सकते हैं।<br>प्रोफाइल की जानकारी संबंधित परिवार से सत्यापित कर लें।</footer>
+</main>
+<script>
+const API_BASE = 'https://mithila-sync-api.vercel.app/api/sync-pull';
+const WHATSAPP_NUMBER = '918291823690';
+const PAGE_SIZE = 20;
+const LOGO_URL = 'images/mithila1.png';   // logo_ / logo- wali photo ki jagah ye dikhega
+
+// index.html ke dropdown ke codes -> Hindi naam
+const GOTRA_LABELS = {
+  SHANDILYA: 'शाण्डिल्य', SAVARNA: 'सवर्ण', VATS: 'वत्स', KASHYAP: 'काश्यप',
+  BHARDWAJ: 'भारद्वाज', KAUSHIK: 'कौशिक', KATYAYAN: 'कात्यायन', PARASHAR: 'पराशर',
+  MUDGAL: 'मुद्गल', KRISHNATRE: 'कृष्णात्रेय', GAUTAM: 'गौतम'
+};
+
+const cardsEl  = document.getElementById('cards');
+const countEl  = document.getElementById('count');
+const moreWrap = document.getElementById('moreWrap');
+const moreBtn  = document.getElementById('moreBtn');
+
+let statusEl = document.getElementById('status');
+if (!statusEl) {
+  statusEl = document.createElement('p');
+  statusEl.id = 'status';
+  statusEl.className = 'status';
+  cardsEl.parentNode.insertBefore(statusEl, cardsEl);
+}
+
+/* ================= styles (photo blur + lightbox) ================= */
+(function injectStyles() {
+  const css = `
+    .photo{position:relative}
+    .photo.is-logo{background:#fff}
+    .photo.is-logo img{object-fit:contain;padding:28px}
+    .photo.blurred img{filter:blur(7px);transform:scale(1.15)}
+    .photo-lock{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:16px;text-align:center;color:#fff;background:rgba(20,12,40,.45);font-weight:800;line-height:1.4}
+    .photo-lock .lock-icon{font-size:28px}
+    .photo-lock small{font-weight:600;opacity:.9}
+    .lb{display:none;position:fixed;inset:0;z-index:9999;align-items:center;justify-content:center;background:rgba(10,6,20,.93)}
+    .lb.open{display:flex}
+    .lb-img{max-width:94vw;max-height:86vh;object-fit:contain;border-radius:8px;box-shadow:0 20px 60px rgba(0,0,0,.5);user-select:none;-webkit-user-drag:none}
+    .lb-msg{color:#fff;font-weight:800;font-size:17px;padding:20px;text-align:center}
+    .lb-btn{position:absolute;display:grid;place-items:center;width:48px;height:48px;border:0;border-radius:50%;background:rgba(255,255,255,.18);color:#fff;font-size:24px;line-height:1;cursor:pointer}
+    .lb-btn:hover{background:rgba(255,255,255,.3)}
+    .lb-close{top:14px;right:14px;font-size:30px}
+    @media(max-width:520px){.lb-btn{width:42px;height:42px}}
+  `;
+  const st = document.createElement('style');
+  st.textContent = css;
+  document.head.appendChild(st);
+})();
+
+/* ================= lightbox (abhi photo blur hai, isliye use nahi ho raha) ================= */
+const lb = {};
+
+(function buildLightbox() {
+  const el = document.createElement('div');
+  el.className = 'lb';
+  el.setAttribute('role', 'dialog');
+  el.setAttribute('aria-modal', 'true');
+  el.setAttribute('aria-label', 'फोटो');
+  el.innerHTML =
+    '<button class="lb-btn lb-close" type="button" aria-label="बंद करें">&times;</button>' +
+    '<img class="lb-img" alt="">';
+  document.body.appendChild(el);
+
+  lb.el = el;
+  lb.img = el.querySelector('.lb-img');
+
+  el.querySelector('.lb-close').addEventListener('click', closeLb);
+  el.addEventListener('click', (e) => { if (e.target === el) closeLb(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLb(); });
+})();
+
+function openLb(url, alt) {
+  lb.img.alt = alt || '';
+  lb.img.src = url;
+  lb.el.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLb() {
+  lb.el.classList.remove('open');
+  document.body.style.overflow = '';
+  lb.img.removeAttribute('src');
+}
+
+/* ================= URL se search values ================= */
+const qs = new URLSearchParams(location.search);
+const query = {
+  profile_type: String(qs.get('profile_type') || '').toUpperCase(),
+  age_min: qs.get('age_min'),
+  age_max: qs.get('age_max'),
+  exclude_gotra: String(qs.get('exclude_gotra') || qs.get('gotra') || '').trim().toUpperCase()
+};
+
+let currentPage = 1;
+let shown = 0;
+let hasMore = false;
+let loading = false;
+
+/* ================= helpers ================= */
+function hasVal(v) {
+  if (v === null || v === undefined) return false;
+  const s = String(v).trim();
+  return s !== '' && !/^(null|undefined|na|n\/a|none|-+)$/i.test(s);
+}
+
+function gotraLabel(g) {
+  if (!hasVal(g)) return '';
+  const key = String(g).trim().toUpperCase();
+  return GOTRA_LABELS[key] || String(g).trim();
+}
+
+// sirf Government job dikhani hai
+function isGovernment(jobType) {
+  if (!hasVal(jobType)) return false;
+  const s = String(jobType).trim().toLowerCase();
+  if (/non[\s-]*gov|private|प्राइवेट|निजी|गैर/.test(s)) return false;
+  return /gov|govt|सरकारी|सरकार/.test(s);
+}
+
+// Sirf primary photo dikhani hai. remote_image_urls (baaki photos) jaanbujhkar use nahi hoti,
+// kyunki unme biodata/contact details ho sakti hain.
+function getPrimaryImage(p) {
+  const url = String(p.remote_primary_image_url || '').trim();
+  return /^https?:\/\//i.test(url) ? url : '';
+}
+
+// file ka naam "logo_" ya "logo-" se shuru ho to wo asli profile photo nahi hai
+function isLogoImage(url) {
+  let name;
+  try {
+    name = decodeURIComponent(new URL(url).pathname.split('/').pop() || '');
+  } catch (e) {
+    name = String(url).split(/[?#]/)[0].split('/').pop() || '';
+  }
+  return /^logo[_-]/i.test(name.trim());
+}
+
+function makeWhatsAppLink(p) {
+  const lines = [
+    'नमस्कार, मुझे मिथिला विवाह मंच की वेबसाइट पर यह प्रोफाइल पसंद आई है।',
+    'नाम: ' + (hasVal(p.full_name) ? String(p.full_name).trim() : '—')
+  ];
+  const add = (label, val) => { if (hasVal(val)) lines.push(label + ': ' + String(val).trim()); };
+  add('प्रोफाइल', p.profile_type === 'BRIDE' ? 'वधू' : 'वर');
+  add('जन्म तिथि', p.date_of_birth);
+  add('आयु', p.age);
+  add('ऊँचाई', p.height);
+  add('गोत्र', gotraLabel(p.gotra));
+  add('शिक्षा', p.education);
+  add('प्रोफेशन', p.profession || p.occupation);
+  add('वर्तमान स्थान', p.location_current);
+  add('Profile ID', p.id);
+  lines.push('कृपया इस प्रोफाइल की पूरी जानकारी बताएं।');
+  return 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(lines.join('\n'));
+}
+
+function showMessage(html) {
+  cardsEl.innerHTML = '<div class="empty">' + html + '</div>';
+}
+
+/* ================= cards ================= */
+function buildPhoto(p) {
+  const photo = document.createElement('div');
+  photo.className = 'photo';
+
+  const url = getPrimaryImage(p);
+  if (!url) {
+    photo.textContent = 'फोटो उपलब्ध नहीं';
+    return photo;
+  }
+
+  // logo wali image ho to usko mat dikhao, Mithila Vivah Manch ka logo dikhao (blur nahi)
+  if (isLogoImage(url)) {
+    photo.classList.add('is-logo');
+    const logo = document.createElement('img');
+    logo.src = LOGO_URL;
+    logo.alt = 'मिथिला विवाह मंच';
+    logo.addEventListener('error', () => {
+      photo.classList.remove('is-logo');
+      photo.textContent = 'फोटो उपलब्ध नहीं';
+    });
+    photo.appendChild(logo);
+    return photo;
+  }
+
+  const img = document.createElement('img');
+  img.alt = 'प्रोफाइल की फोटो (धुंधली)';
+  img.loading = 'lazy';
+  // photo load na ho (jaise ImgBB down) to sirf text dikhao
+  img.addEventListener('error', () => {
+    photo.classList.remove('blurred');
+    photo.textContent = 'फोटो उपलब्ध नहीं';
+  });
+  img.src = url;
+
+  const lock = document.createElement('div');
+  lock.className = 'photo-lock';
+  lock.innerHTML =
+    '<span class="lock-icon">🔒</span>' +
+    '<small>रजिस्टर्ड सदस्यों को ही फोटो दिखाई जाती है</small>';
+
+  photo.classList.add('blurred');
+  photo.append(img, lock);
+  return photo;
+}
+
+function renderProfiles(profiles) {
+  for (const p of profiles) {
+    const card = document.createElement('article');
+    card.className = 'card';
+
+    const body = document.createElement('div');
+    body.className = 'cardbody';
+
+    const h3 = document.createElement('h3');
+    h3.textContent = hasVal(p.full_name) ? String(p.full_name).trim() : 'नाम उपलब्ध नहीं';
+
+    const meta = document.createElement('div');
+    meta.className = 'meta';
+    [
+      ['गोत्र', gotraLabel(p.gotra)],
+      ['प्रोफेशन', p.profession || p.occupation],
+      ['नौकरी', isGovernment(p.job_type) ? 'सरकारी' : ''],
+      ['ऊँचाई', p.height],
+      ['जन्म तिथि', p.date_of_birth]
+    ].forEach(([label, val]) => {
+      if (!hasVal(val)) return;               // khali ho to row dikhani hi nahi
+      const row = document.createElement('div');
+      const b = document.createElement('b');
+      b.textContent = label + ': ';
+      row.append(b, document.createTextNode(String(val).trim()));
+      meta.appendChild(row);
+    });
+
+    const link = document.createElement('a');
+    link.className = 'wa';
+    link.href = makeWhatsAppLink(p);
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+    link.textContent = '💬 पूरा जानकारी लें';
+
+    body.append(h3, meta, link);
+    card.append(buildPhoto(p), body);
+    cardsEl.appendChild(card);
+  }
+}
+
+/* ================= API call ================= */
+async function loadProfiles(append) {
+  if (loading) return;
+  loading = true;
+  moreBtn.disabled = true;
+
+  if (!append) {
+    currentPage = 1;
+    shown = 0;
+    cardsEl.innerHTML = '';
+    countEl.textContent = '';
+    moreWrap.style.display = 'none';
+  }
+  statusEl.textContent = 'प्रोफाइल खोजी जा रही हैं…';
+
+  const params = new URLSearchParams({
+    profile_type: query.profile_type,
+    age_min: query.age_min,
+    age_max: query.age_max,
+    page: String(currentPage),
+    limit: String(PAGE_SIZE)
+  });
+  if (query.exclude_gotra) params.set('exclude_gotra', query.exclude_gotra);
+
+  try {
+    const response = await fetch(API_BASE + '?' + params.toString(), {
+      headers: { Accept: 'application/json' }
+    });
+    let data = null;
+    try { data = await response.json(); } catch (e) { /* JSON nahi mila */ }
+
+    if (!response.ok || !data || data.ok === false) {
+      throw new Error((data && (data.error || data.message)) || ('HTTP ' + response.status));
+    }
+
+    const profiles = Array.isArray(data.profiles) ? data.profiles : [];
+    shown += profiles.length;
+
+    if (!profiles.length && !append) {
+      showMessage('इस उम्र और गोत्र के अनुसार कोई प्रोफाइल नहीं मिली।<br>कृपया उम्र बदलकर <a href="./#profile-search"><b>फिर खोजें</b></a>।');
+      statusEl.textContent = '';
+      countEl.textContent = '0 प्रोफाइल';
+    } else {
+      renderProfiles(profiles);
+      const total = Number.isFinite(Number(data.total)) ? Number(data.total) : shown;
+      countEl.textContent = total + ' प्रोफाइल';
+      statusEl.textContent = shown + ' प्रोफाइल दिखाई जा रही हैं।';
+    }
+
+    hasMore = Boolean(data.has_more);
+    moreWrap.style.display = hasMore ? 'flex' : 'none';
+  } catch (err) {
+    console.error('Profile load failed:', err);
+    if (!append) {
+      showMessage('प्रोफाइल लोड नहीं हो पाईं। कृपया कुछ देर बाद फिर कोशिश करें।<br><small>' +
+        String(err.message || err).replace(/</g, '&lt;') + '</small>');
+    }
+    statusEl.textContent = 'API कनेक्शन में समस्या है। (अगर Console में CORS error दिखे तो Vercel में ALLOWED_ORIGIN जाँचें।)';
+    countEl.textContent = '';
+    moreWrap.style.display = 'none';
+  } finally {
+    loading = false;
+    moreBtn.disabled = false;
+  }
+}
+
+moreBtn.addEventListener('click', () => {
+  if (hasMore) { currentPage += 1; loadProfiles(true); }
+});
+
+/* ================= page khulte hi search ================= */
+(function init() {
+  const min = Number(query.age_min);
+  const max = Number(query.age_max);
+  const valid =
+    ['GROOM', 'BRIDE'].includes(query.profile_type) &&
+    Number.isFinite(min) && Number.isFinite(max) && min >= 18 && max >= min;
+
+  if (!valid) {
+    statusEl.textContent = '';
+    showMessage('कृपया पहले मुख्य पेज से खोज करें।<br><a href="./#profile-search"><b>🔎 खोज पेज पर जाएँ</b></a>');
+    return;
+  }
+
+  const who = query.profile_type === 'BRIDE' ? 'वधू' : 'वर';
+  const g = GOTRA_LABELS[query.exclude_gotra] || query.exclude_gotra;
+  statusEl.textContent = 'खोज: ' + who + ' · आयु ' + min + '–' + max + ' वर्ष' +
+    (g ? ' · ' + g + ' गोत्र को छोड़कर' : '');
+  loadProfiles(false);
+})();
+</script>
+</body></html>
