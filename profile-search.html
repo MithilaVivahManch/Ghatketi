@@ -45,7 +45,6 @@
 const API_BASE = 'https://mithila-sync-api.vercel.app/api/sync-pull';
 const WHATSAPP_NUMBER = '918291823690';
 const PAGE_SIZE = 20;
-const LOGO_URL = 'images/mithila1.png';   // logo_ / logo- wali photo ki jagah ye dikhega
 
 // profile_rating agar number hai to itna ya usse zyada = "Strong" (apne scale ke hisaab se badlein)
 const STRONG_MIN_NUMBER = 8;
@@ -74,9 +73,6 @@ if (!statusEl) {
 (function injectStyles() {
   const css = `
     .photo{position:relative}
-    .photo.is-logo{background:#fff}
-    .photo.is-logo::after{display:none}
-    .photo.is-logo img{object-fit:contain;padding:28px}
     .photo.blurred img{filter:blur(5px);transform:scale(1.15)}
     .photo-lock{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:16px;text-align:center;color:#fff;background:rgba(20,12,40,.45);font-weight:800;line-height:1.4}
     .photo-lock .lock-icon{font-size:28px}
@@ -160,21 +156,18 @@ function isGovernment(jobType) {
   return /gov|govt|सरकारी|सरकार/.test(s);
 }
 
-// Sirf primary photo dikhani hai (baaki photos me biodata/contact ho sakta hai)
+// Sirf ek photo dikhani hai (baaki photos me biodata/contact ho sakta hai).
+// API ab profile_images table se `images` array bhejti hai (logo pehle hi hata diye gaye hain,
+// primary sabse pehle). Purani `remote_primary_image_url` fallback ke liye rakhi hai.
 function getPrimaryImage(p) {
-  const url = String(p.remote_primary_image_url || '').trim();
-  return /^https?:\/\//i.test(url) ? url : '';
-}
-
-// file ka naam "logo_" ya "logo-" se shuru ho to wo asli profile photo nahi hai
-function isLogoImage(url) {
-  let name;
-  try {
-    name = decodeURIComponent(new URL(url).pathname.split('/').pop() || '');
-  } catch (e) {
-    name = String(url).split(/[?#]/)[0].split('/').pop() || '';
+  const isUrl = (u) => /^https?:\/\//i.test(String(u || '').trim());
+  if (Array.isArray(p.images) && p.images.length) {
+    const primary = p.images.find((im) => im && im.is_primary && isUrl(im.url));
+    if (primary) return String(primary.url).trim();
+    const first = p.images.find((im) => im && isUrl(im.url));
+    if (first) return String(first.url).trim();
   }
-  return /^logo[_-]/i.test(name.trim());
+  return isUrl(p.remote_primary_image_url) ? String(p.remote_primary_image_url).trim() : '';
 }
 
 function makeWhatsAppLink(p) {
@@ -211,26 +204,12 @@ function buildPhoto(p) {
     return photo;
   }
 
-  // logo wali image ho to Mithila Vivah Manch ka logo dikhao (blur nahi)
-  if (isLogoImage(url)) {
-    photo.classList.add('is-logo');
-    const logo = document.createElement('img');
-    logo.src = LOGO_URL;
-    logo.alt = 'मिथिला विवाह मंच';
-    logo.addEventListener('error', () => {
-      photo.classList.remove('is-logo');
-      photo.textContent = 'फोटो उपलब्ध नहीं';
-    });
-    photo.appendChild(logo);
-    return photo;
-  }
-
   const img = document.createElement('img');
   img.alt = 'प्रोफाइल की फोटो (धुंधली)';
   img.loading = 'lazy';
   img.addEventListener('error', () => {
     photo.classList.remove('blurred');
-    photo.textContent = 'फोटो उपलब्ध नहीं';
+    photo.replaceChildren(document.createTextNode('फोटो उपलब्ध नहीं'));
   });
   img.src = url;
 
