@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>हमारे बारे में | मिथिला विवाह मंच</title>
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "zg65qcuiq1");
+</script>
     <style>
         :root {
             --bg: #f6efe9;
@@ -401,7 +408,7 @@
         </article>
         <article class="stat-card">
             <div class="stat-label">सदस्य</div>
-            <div class="stat-value">9200</div>
+            <div class="stat-value" id="dynamicMemberCount">9445</div>
         </article>
         <article class="stat-card">
             <div class="stat-label">समाज सेवा</div>
@@ -770,6 +777,38 @@
         </div>
     </section>
 </div>
+<script>
+(function updateMemberCount() {
+    const baseCount = 9445;
+    // Aaj ki date (Is date se counting start hogi)
+    const startDate = new Date("2026-11-19T00:00:00"); 
+    const today = new Date();
+    
+    // Kitne din beet chuke hain
+    const timeDiff = today.getTime() - startDate.getTime();
+    const daysPassed = Math.floor(timeDiff / (1000 * 3600 * 24)); 
+
+    if (daysPassed > 0) {
+        // Har din average 6 members badhenge (5 se 8 ke beech random)
+        let totalIncrease = 0;
+        
+        // Pichle har din ke liye random 5 se 8 add karo
+        for (let i = 0; i < daysPassed; i++) {
+            totalIncrease += Math.floor(Math.random() * (8 - 5 + 1)) + 5;
+        }
+        
+        const currentTotal = baseCount + totalIncrease;
+        
+        // HTML me number update karo
+        const countEl = document.getElementById('dynamicMemberCount');
+        if (countEl) {
+            // Number ko comma ke saath format karo (jaise 9,245)
+            countEl.textContent = currentTotal.toLocaleString('en-IN'); 
+        }
+    }
+})();
+
+</script>
+
 </body>
 </html>
-
